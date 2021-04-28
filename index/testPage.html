@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Directory Contents</title>
+ <link rel="stylesheet" href="style.css">
+  <script src=".sorttable.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+  
+    <h1>Directory Contents</h1>
+    
+    <table class="sortable">
+      <thead>
+        <tr>
+          <th>Filename</th>
+          <th>Type</th>
+          <th>Size <small>(bytes)</small></th>
+          <th>Date Modified</th>
+        </tr>
+      </thead>
+      <tbody>
+     
+          <tr class='$class'>
+            <td><a href='whatever/testJS.js' download>testJS.js</a></td>
+            <td>.js</td>
+            <td>178k</td>
+            <td sorttable_customkey='$timekey'>today</td>
+          </tr>
+
+          <tr class='$class'>
+            <td><a href='whatever/whatever.txt' download>testJS.js</a></td>
+            <td>.js</td>
+            <td>178k</td>
+            <td sorttable_customkey='$timekey'>today</td>
+          </tr>
+      </tbody>
+    </table>
+  
+    <h2></h2>
+    
+  </div>
+  
+</body>
+
+</html>
