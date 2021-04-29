@@ -5,8 +5,12 @@ import java.util.Date;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.FileSystems;
+import java.util.*;
 
 public class GenerateHTML{
+
+
+	private static List<String> exclusionList = Arrays.asList(".git", ".idea", "out", "README.md", "src", "myDir.html", "404.html", "404.css");
 	
 	public GenerateHTML(){
 
@@ -34,7 +38,7 @@ public class GenerateHTML{
 			// Add code below to the head part of the file if we want CSS to work with our page
 			// <link rel=\"shortcut icon\" href=\"#\"><link rel=\"stylesheet\" href=\"/style.css\">
 			FileWriter myWriter = new FileWriter(".\\myDir.html");
-			myWriter.write("<!DOCTYPE html><html><head></head><body><div id=\"container\"><h1>Directory Contents</h1>");
+			myWriter.write("<!DOCTYPE html><html><head></head><link rel=\"shortcut icon\" href=\"#\"><link rel=\"stylesheet\" href=\"/style.css\"><body><div id=\"container\"><h1>Directory Contents</h1>");
 			myWriter.write("<table class=\"sortable\"><thead><tr><th>Name</th><th>Size <small>(bytes)</small></th><th>Date Modified</th></tr></thead><tbody>");
 			File directoryPath = new File(".\\");
         //List of all files and directories
@@ -45,6 +49,7 @@ public class GenerateHTML{
         } else {
             System.out.println();
             for (int i = 0; i < contents.length; i++) {
+            	//if (!exclusionList.contains(contents[i])) {
             	myWriter.write("<tr class=\"$class\">");
                 	// String ext = contents[i].substring(contents[i].lastIndexOf('.') + 1, contents[i].length());
                 	File f = new File(".\\"+contents[i]);
@@ -56,6 +61,7 @@ public class GenerateHTML{
 	                    myWriter.write("<td>" + (double) f.length() / 1000 + " kB" + "</td>");
 	                    myWriter.write("<td>" + date + "</td>");
 	                	myWriter.write("</tr>");
+	               // }
                 
             }
             

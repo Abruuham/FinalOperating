@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.StringTokenizer;
 import java.awt.Desktop;
+import java.util.Timer;
+import java.util.TimerTask;
 
 // The tutorial can be found just here on the SSaurel's Blog : 
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
@@ -41,6 +43,25 @@ public class JavaHTTPServer implements Runnable {
 
 		html.createFile();
 		html.generateHTML();
+
+
+		Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            int i = 10;
+            public void run(){
+                if (i >= 0) {
+					html.createFile();
+					html.generateHTML();
+
+                    if(i == 1){
+                    	i = 10;
+                    }
+                    i--;
+                }
+
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, 1000);
 		try
 		{
 			ServerSocket serverConnect = new ServerSocket(PORT);
